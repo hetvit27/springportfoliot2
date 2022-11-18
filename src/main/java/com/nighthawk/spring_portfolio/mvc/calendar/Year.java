@@ -23,6 +23,7 @@ class Year {
    public void setYear(int year) {
       this.year = year;
       this.setIsLeapYear(year);
+      this.firstDayOfYear(year);
    }
 
    /* isLeapYear getter/setters */
@@ -37,17 +38,20 @@ class Year {
    public String isLeapYearToString(){
       return ( "{ \"year\": "  +this.year+  ", " + "\"isLeapYear\": "  +this.isLeapYear+ " }" );
    }	
-
+   public String toString() {
+      return isLeapYearToString();
+   }
    public int getfirstDayOfYear(int year) {
       return APCalendar.firstDayOfYear(year);
+   }
+   public String firstDayOfYearToString(){
+      return ( "{ \"year\": "  +this.year+  ", " + "\"firstDayOfYear\": "  +this.firstDayOfYear(year)+ " }" );
    }
    public void setFirstDayOfYear(int year) {
       this.firstDayOfYear = APCalendar.firstDayOfYear(year);
    }
-   public String firstDayOfYearString () {
-      return ( "{ \"firstDayOfYear\": "  + this.firstDayOfYear + " }" );
+   
    }
-
    public int numberOfLeapYears(int year1, int year2) {
       return APCalendar.numberOfLeapYears(year1, year2);
    }
