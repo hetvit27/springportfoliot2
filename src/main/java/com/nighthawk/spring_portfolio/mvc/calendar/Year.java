@@ -23,6 +23,7 @@ class Year {
    public void setYear(int year) {
       this.year = year;
       this.setIsLeapYear(year);
+      this.firstDayOfYear(year);
    }
 
    /* isLeapYear getter/setters */
@@ -41,12 +42,9 @@ class Year {
    public int getfirstDayOfYear(int year) {
       return APCalendar.firstDayOfYear(year);
    }
-   public void setFirstDayOfYear(int year) {
-      this.firstDayOfYear = APCalendar.firstDayOfYear(year);
-   }
-   public String firstDayOfYearString () {
-      return ( "{ \"firstDayOfYear\": "  + this.firstDayOfYear + " }" );
-   }
+   public String firstDayOfYearToString () {
+      return ( "{ \"year\": "  +this.year+  ", " + "\"firstDayOfYear\": "  +this.firstDayOfYear(year)+ " }" );
+   }	
 
    public int numberOfLeapYears(int year1, int year2) {
       return APCalendar.numberOfLeapYears(year1, year2);
@@ -60,9 +58,14 @@ class Year {
    public String numberOfLeapYearsToString(){
       return ( "{ \"numberOfLeapYears\": "  + this.numberOfLeapYears + " }" );
    }
-
-   public int dayOfYear(int month, int day, int year) {
-      return APCalendar.dayOfYear(month, day, year);
+   static int dayofyear(int d, int m, int y){
+      int t[] = { 0, 3, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4 };
+      if (m < 3)
+          y--;
+      return (y + y / 4 - y / 100 + y / 400 + t[m - 1]+ d) % 7;
+   }
+   public int firstDayOfYear(int year) {
+      return dayofyear(1, 1, year);
    }
 
    public void setDayOfYear(int month, int day, int year) {
