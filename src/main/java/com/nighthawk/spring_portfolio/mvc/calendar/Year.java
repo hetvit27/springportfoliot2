@@ -72,8 +72,8 @@ class Year {
       this.dayOfYear=APCalendar.dayOfYear(month, day, year);
    }
 
-   public String dayOfYearToString(){
-      return ( "{ \"dayOfYear\": "  + this.dayOfYear + " }" );
+   public String dayOfYearToString(int month, int day, int year) {
+      return ( "{ \"month\": "  + month +  ", " + "\"day\": "  + day + ", " +  "\"year\": "  +this.year+  ", " + "\"dayOfYear\": "  + APCalendar.dayOfYear(month, day, year)+ " }" );
    }
    public int dayOfWeek(int month, int day, int year) {
       return APCalendar.dayOfWeek(month, day, year);
@@ -82,9 +82,9 @@ class Year {
       this.dayOfWeek = APCalendar.dayOfWeek(month, day, year);
    }
 
-   public String dayOfWeekToString(){
-      return ( "{ \"dayOfWeek\": "  + this.dayOfWeek + " }" );
-   }	
+   public String dayOfWeekToString(int month, int day, int year){
+      return ( "{ \"month\": "  + month +  ", " + "\"day\": "  + day + ", " +  "\"year\": "  + year +  ", " + "\"dayOfWeek\": "  + APCalendar.dayOfWeek(month, day, year)+ " }" );
+   }
    
    /* standard toString placeholder until class is extended */
    public String toString() { 
