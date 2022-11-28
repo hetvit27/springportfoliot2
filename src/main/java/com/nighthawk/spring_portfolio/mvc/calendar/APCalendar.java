@@ -30,8 +30,9 @@ public class APCalendar {
     */
     public static int firstDayOfYear(int year) {
         // implementation not shown
-        Date currentDate = new Date(year-1900, 0, 1);
-        return currentDate.getDay();
+        // Date currentDate = new Date(year-1900, 0, 1);
+        // return currentDate.getDay();
+        return 0;
     }
     /** Returns n, where month, day, and year specify the nth day of the year.
      * This method accounts for whether year is a leap year. 
