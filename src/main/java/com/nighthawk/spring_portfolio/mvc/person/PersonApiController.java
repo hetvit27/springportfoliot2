@@ -117,7 +117,7 @@ public class PersonApiController {
             date_map.put( (String) stat_map.get("date"), attributeMap );
             System.out.println(attributeMap);
             System.out.println(date_map);
-            for (Map.Entry<String,Map<String, Object>> entry : date_map.entrySet())  {
+            for (Map.Entry<String,Map<String, Object>> entry : date_map.entrySet())  {   
                 person.addDailySteps((int)entry.getValue().get("steps"), (int)entry.getValue().get("calories"), entry.getKey());
             }
             // person.setStats(date_map);  // BUG, needs to be customized to replace if existing or append if new
@@ -130,11 +130,22 @@ public class PersonApiController {
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST); 
         
     }
-
+    @GetMapping("/getBmi/{id}")
+    public String getBmi(@PathVariable long id) {
+        Optional<Person> optional = repository.findById(id);
+        if (optional.isPresent()) {  // Good ID
+            Person person = optional.get();  // value from findByID
+            String bmiToString = person.getBmiToString();
+            return bmiToString;
+        }
+        // Bad ID
+        return "Error - Bad ID";       
+    }
     @GetMapping(value = "/getAverageSteps", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Integer> getAverageSteps(@RequestBody final Map<String,Object> stat_map) {
         // find ID
         long id=Long.valueOf(Integer.toString((int)stat_map.get("id")));  
+        
         Optional<Person> optional = repository.findById((id));
         if (optional.isPresent()) {  // Good ID
             Person person = optional.get();  

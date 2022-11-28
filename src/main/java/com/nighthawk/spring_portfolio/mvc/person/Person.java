@@ -1,3 +1,5 @@
+
+
 package com.nighthawk.spring_portfolio.mvc.person;
 
 import java.time.LocalDate;
@@ -106,6 +108,7 @@ public class Person {
         else{
             //if it doesn't, create a new Object with calories 0 steps DailySteps and put in stats at key Day
             HashMap newDay = new HashMap();
+            
             newDay.put("calories", Calories);
             newDay.put("steps", DailySteps);
             stats.put(Day, newDay);
