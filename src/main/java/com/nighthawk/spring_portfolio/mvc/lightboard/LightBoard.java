@@ -72,8 +72,8 @@ public class LightBoard {
     /* Output is intended for Terminal, draws color palette */
     public String toColorPalette() {
         // block sizes
-        final int ROWS = 6;
-        final int COLS = 7;
+        final int ROWS = 3;
+        final int COLS = 4;
 
         // Build large string for entire color palette
         String outString = "";
